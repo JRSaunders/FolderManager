@@ -1,8 +1,8 @@
 <?php
 namespace FolderManager;
 /**
- * Class folderManager
- * @package folderManager
+ * Class FolderManager
+ * @package FolderManager
  */
 class FolderManager
 {
@@ -104,12 +104,16 @@ class FolderManager
         return $this->management_folder;
     }
 
-    /**
-     * @param $file
-     */
+	/**
+	 * @param $file
+	 *
+	 * @return $this
+	 */
     public function protectedFile($file)
     {
         $this->protected_files_array[] = $file;
+
+        return $this;
     }
 
     /**
@@ -122,15 +126,21 @@ class FolderManager
         return in_array($file, $this->protected_files_array);
     }
 
-
+	/**
+	 * @return $this
+	 */
     public function reloadManagementFolder()
     {
         $this->setManagementFolder($this->management_folder);
+
+        return $this;
     }
 
     public function reloadManagementFile()
     {
         $this->setManagementFile($this->management_file);
+
+        return $this;
     }
 
     /**
@@ -336,9 +346,11 @@ class FolderManager
         return $this->errors;
     }
 
-    /**
-     * @param mixed $errors
-     */
+	/**
+	 * @param $error
+	 *
+	 * @return $this
+	 */
     protected function setError($error)
     {
 
@@ -346,6 +358,8 @@ class FolderManager
             $this->errors = array();
         }
         $this->errors[] = $error;
+
+        return $this;
     }
 
     /**
@@ -357,15 +371,19 @@ class FolderManager
         return $this->messages;
     }
 
-    /**
-     * @param mixed $messages
-     */
+	/**
+	 * @param $message
+	 *
+	 * @return $this
+	 */
     protected function setMessage($message)
     {
         if (!isset($this->messages)) {
             $this->messages = array();
         }
         $this->messages[] = $message;
+
+        return $this;
 
     }
 
@@ -377,7 +395,9 @@ class FolderManager
         return $this->management_file;
     }
 
-
+	/**
+	 * @return $this
+	 */
     protected function scanFolder()
     {
 
@@ -405,6 +425,8 @@ class FolderManager
                 $this->file_array[] = $file_object;
             }
         }
+
+        return $this;
 
     }
 
